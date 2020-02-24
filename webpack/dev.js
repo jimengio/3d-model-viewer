@@ -48,6 +48,12 @@ module.exports = {
     splitChunks: splitChunks,
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __DEV__: true,
+      "process.env": {
+        NODE_ENV: JSON.stringify("development"),
+      },
+    }),
     new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true, async: false }),
     new webpack.DllReferencePlugin({
       manifest: path.resolve(__dirname, "dll/manifest.json"),

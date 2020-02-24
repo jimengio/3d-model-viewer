@@ -4,6 +4,7 @@ typings/
 .vscode/
 dist/
 webpack/dll/*
+webpack/data/*
 .awcache/
 
 .DS_Store

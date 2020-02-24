@@ -58,6 +58,7 @@ module.exports = {
       manifest: path.resolve(__dirname, "dll/manifest-release.json"),
     }),
     new webpack.DefinePlugin({
+      __DEV__: false,
       "process.env": {
         NODE_ENV: JSON.stringify("production"),
       },
