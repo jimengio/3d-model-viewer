@@ -1,6 +1,6 @@
-## Workflow
+## 3D Model Viewer
 
-> A project template based on TypeScript, React, immer, emotion, rex, ruled-router...
+> threejs based on 3D model component used in JimengIO
 
 ### Usage
 

@@ -3,9 +3,11 @@
 .gitattributes
 .gitignore
 .prettierrc
+.github
 dist
 example
 template.ejs
 tsconfig.json
 webpack
 yarn.lock
+data
