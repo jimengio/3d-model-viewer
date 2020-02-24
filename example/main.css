@@ -10,6 +10,11 @@ body * {
   flex-shrink: 0;
 }
 
+canvas {
+  border: 0;
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
