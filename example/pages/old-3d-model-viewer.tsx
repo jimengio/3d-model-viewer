@@ -24,16 +24,6 @@ let PageHome: FC<{}> = React.memo((props) => {
   /** Renderers */
   return (
     <div>
-      Home Page
-      <HashLink to={genRouter.content.path()} text={"Open content"} className={styleButton} />
-      <a
-        onClick={async () => {
-          let { showTime } = await import("../util/time" /* webpackChunkName:"time" */);
-          showTime();
-        }}
-      >
-        Use
-      </a>
       <ThreeModelViewer
         url={gltfDemo}
         radius={radius}

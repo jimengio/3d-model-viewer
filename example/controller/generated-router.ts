@@ -15,55 +15,43 @@ function qsStringify(queries: { [k: string]: any }) {
 // Generated with router-code-generator@0.2.5
 
 export let genRouter = {
-  home: {
-    name: "home",
-    raw: "home",
-    path: () => `/home`,
-    go: () => switchPath(`/home`),
+  oldViewer: {
+    name: "old-viewer",
+    raw: "old-viewer",
+    path: () => `/old-viewer`,
+    go: () => switchPath(`/old-viewer`),
   },
-  content: {
-    name: "content",
-    raw: "content",
-    path: () => `/content`,
-    go: () => switchPath(`/content`),
-  },
-  else: {
-    name: "else",
-    raw: "else",
-    path: () => `/else`,
-    go: () => switchPath(`/else`),
+  newViewer: {
+    name: "new-viewer",
+    raw: "new-viewer",
+    path: () => `/new-viewer`,
+    go: () => switchPath(`/new-viewer`),
   },
   $: {
-    name: "home",
+    name: "old-viewer",
     raw: "",
     path: () => `/`,
     go: () => switchPath(`/`),
   },
 };
 
-export type GenRouterTypeMain = GenRouterTypeTree["home"] | GenRouterTypeTree["content"] | GenRouterTypeTree["else"] | GenRouterTypeTree["$"];
+export type GenRouterTypeMain = GenRouterTypeTree["oldViewer"] | GenRouterTypeTree["newViewer"] | GenRouterTypeTree["$"];
 
 export interface GenRouterTypeTree {
-  home: {
-    name: "home";
+  oldViewer: {
+    name: "old-viewer";
     params: {};
     query: {};
     next: null;
   };
-  content: {
-    name: "content";
-    params: {};
-    query: {};
-    next: null;
-  };
-  else: {
-    name: "else";
+  newViewer: {
+    name: "new-viewer";
     params: {};
     query: {};
     next: null;
   };
   $: {
-    name: "home";
+    name: "old-viewer";
     params: {};
     query: {};
     next: null;
