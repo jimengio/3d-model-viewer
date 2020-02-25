@@ -14,21 +14,29 @@ yarn add @jimengio/3d-model-viewer
 import { ThreeDViewer, Old3dModelViewer } from "@jimengio/3d-model-viewer";
 ```
 
-- `ThreeDViewer` 支持多种个格式的组件(TODO)
+- `ThreeDViewer` 支持stl、obj格式的3D模型展示组件
 - `Old3dModelViewer` 老版本显示 GLTF 格式的组件, 使用的是极坐标.
 
 #### `ThreeDViewer`
 
-_TODO_
-
 ```jsx
 <ThreeDViewer
   url={gltfDemo}
-  isDragging
   renderSize={{
     width: 500,
     height: 500,
   }}
+  backgroundColor="#000"
+  isDragging
+  isZoom
+  isRotate
+  materialColor="#fff"
+  initPostion={
+    cameraPosition:[0,0,0]
+  }
+  style={{}}
+  onLoadComplete={()=>{}}
+  onListen={(listenParam)=>{}}
 />
 ```
 
