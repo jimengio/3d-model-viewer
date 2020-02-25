@@ -16,6 +16,8 @@ interface IProps {
   onLoadComplete?: () => void; // 模型加载完回调。
   backgroundColor?: string; // 画布背景颜色。
   isDragging?: boolean; // 是否支持拖拽。
+  isZoom?: boolean; // 是否支持缩放。
+  isRotate?: boolean; // 是否支持缩放。
   materialColor?: string; // 材质主题颜色（目前仅支持单色）。
   initPostion?: {
     cameraPosition: number[]; // 初始相机位置。
@@ -35,7 +37,16 @@ let ThreeDViewer: FC<IProps> = React.memo((props) => {
     onListen,
     initPostion = { cameraPosition: [0, 0, 400] },
     style,
+    isZoom = false,
+    isRotate = false,
   } = props;
+
+  let camera: THREE.PerspectiveCamera = null;
+  let renderer: THREE.WebGLRenderer = null;
+  let scene: THREE.Scene = null;
+  let light: THREE.Light = null;
+  let controls: OrbitControls = null;
+  let mesh: THREE.Mesh = null;
 
   const [loading, setLoading] = useState(true);
   const [hint, setHint] = useState(null);
@@ -66,13 +77,6 @@ let ThreeDViewer: FC<IProps> = React.memo((props) => {
       cameraPosition: newCameraPosition,
     });
   };
-
-  let camera: THREE.PerspectiveCamera = null;
-  let renderer: THREE.WebGLRenderer = null;
-  let scene: THREE.Scene = null;
-  let light: THREE.Light = null;
-  let controls: OrbitControls = null;
-  let mesh: THREE.Mesh = null;
 
   /**
    * 初始化渲染器
@@ -117,13 +121,16 @@ let ThreeDViewer: FC<IProps> = React.memo((props) => {
         return new OBJLoader2().load(
           url,
           (object3D) => {
+            // console.log("312",object3D);
             object3D.scale.set(1, 1, 1);
             scene.add(object3D);
             if (onLoadComplete) onLoadComplete();
             setLoading(false);
           },
           () => {},
-          (err) => loadError(err)
+          (err) => {
+            loadError(err);
+          }
         );
       default:
         return setHint("暂不支持的格式文件！");
@@ -163,7 +170,9 @@ let ThreeDViewer: FC<IProps> = React.memo((props) => {
     // 动画循环时，是否有阻尼即惯性
     controls.enableDamping = false;
     // 是否可以缩放
-    controls.enableZoom = true;
+    controls.enableZoom = isZoom;
+    // 是否可以旋转
+    controls.enableRotate = isRotate;
     // 相机距离原点最小距离
     controls.minDistance = 1;
     // 相机距离原点最大距离
