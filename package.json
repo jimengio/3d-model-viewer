@@ -1,6 +1,6 @@
 {
   "name": "@jimengio/3d-model-viewer",
-  "version": "0.2.0-a2",
+  "version": "0.2.0",
   "description": "threejs-based 3D model viewer used in JimengIO",
   "main": "./lib/index.js",
   "scripts": {
